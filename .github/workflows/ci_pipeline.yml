@@ -15,6 +15,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # refer the secrets from environment of production
+    environment:
+      name: production
+      url: "https://github.com"
+
     strategy:
       matrix:
         node: [20]
