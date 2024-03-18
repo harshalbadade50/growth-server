@@ -16,6 +16,11 @@ export class UserService {
   public async registerUser(req: Request, res: Response, _next: NextFunction) {
     try {
       const { email, password } = req.body as User;
+      if (!email || !password) {
+        return res
+          .status(500)
+          .send({ message: "Email or password is undefined!" });
+      }
       const userExists = await this.findUser(email);
       if (userExists.rowCount === 1) {
         return res.status(409).send({ message: "User already registered!" });

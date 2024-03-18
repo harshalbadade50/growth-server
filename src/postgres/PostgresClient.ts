@@ -6,12 +6,21 @@ export class PostgresClient {
   constructor() {}
 
   public configure() {
+    const { user, host, database, password, port } = this.getConfiguration();
+    console.log(
+      "DB connection creds ---> ",
+      user,
+      host,
+      database,
+      password,
+      port
+    );
     const pool = new Pool({
-      user: "growth",
-      host: "localhost",
-      database: "growth",
-      password: "growth",
-      port: 5432,
+      user,
+      host,
+      database,
+      password,
+      port,
     });
 
     pool.on("error", (error) => {
@@ -22,5 +31,16 @@ export class PostgresClient {
     });
 
     return pool;
+  }
+
+  private getConfiguration() {
+    const port = process.env.PG_PORT ? Number(process.env.PGPORT) : 5432;
+    return {
+      user: process.env.PGUSER || "growth",
+      host: process.env.PGHOST || "localhost",
+      database: process.env.PGDATABASE || "growth",
+      password: process.env.PGPASSWORD || "growth",
+      port,
+    };
   }
 }

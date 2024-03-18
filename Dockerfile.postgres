@@ -1,0 +1,9 @@
+FROM postgres:latest
+
+COPY ./infrastructure/sql/ /docker-entrypoint-initdb.d/
+
+EXPOSE 5432
+
+#ENV POSTGRES_DB growth
+#ENV POSTGRES_USER growth
+ENV POSTGRES_PASSWORD growth_password
