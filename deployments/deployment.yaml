@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: growth-server-deployment
+  labels:
+    app: growth-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: growth-server-deployment
+  template:
+    metadata:
+      labels:
+        app: growth-server-deployment
+    spec:
+      containers:
+        - name: growth-server
+          image: harshalbadade/growth-server
+          ports:
+            - containerPort: 4000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: growth-server-service
+spec:
+  selector:
+    app: growth-server-deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 4000
+  type: LoadBalancer
