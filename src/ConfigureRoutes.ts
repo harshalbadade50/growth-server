@@ -10,7 +10,8 @@ export class ConfigureRoutes {
   public config() {
     const router = Router();
 
-    router.get("/", (_req, res, _next) => {
+    router.get("/hello", (_req, res, _next) => {
+      console.log("into the hello request");
       return res.status(200).send({
         message: "You have reached the server. And it's healthy!",
       });

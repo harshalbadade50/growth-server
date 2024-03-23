@@ -17,6 +17,7 @@ export class ExpressServer {
     const routes = new ConfigureRoutes(this.context).config();
 
     this.server.use("/", routes);
+    console.log("Routes configured");
     return this.server;
   }
 
