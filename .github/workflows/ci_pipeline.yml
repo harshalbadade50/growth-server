@@ -67,5 +67,4 @@ jobs:
 
       - name: Configure Docker and kubectl
         run: |
-          gcloud auth configure-docker
           gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
