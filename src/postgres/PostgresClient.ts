@@ -8,7 +8,7 @@ export class PostgresClient {
   public configure() {
     const { user, host, database, password, port } = this.getConfiguration();
     console.log(
-      "DB connection credentials are ---> ",
+      "DB conn credentials are ---> ",
       user,
       host,
       database,

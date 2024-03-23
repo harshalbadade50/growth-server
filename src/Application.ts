@@ -17,6 +17,7 @@ export class Application {
 
     const expresServer = new ExpressServer(services);
     const server = expresServer.setup();
+    console.log("This is setup");
     return server;
   }
 }
