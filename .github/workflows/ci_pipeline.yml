@@ -65,6 +65,7 @@ jobs:
           service_account: "github-actions-access@my-growth-project-417918.iam.gserviceaccount.com"
           workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
 
-      - name: Set project
+      - name: Set project and connect to cluster
         run: |
           gcloud config set project my-growth-project-417918
+          gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
