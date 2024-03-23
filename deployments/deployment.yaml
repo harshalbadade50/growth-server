@@ -4,6 +4,7 @@ metadata:
   name: growth-server-deployment
   labels:
     app: growth-server-deployment
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -24,7 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: growth-server-service
   name: growth-server-service
+  namespace: default
 spec:
   selector:
     app: growth-server-deployment

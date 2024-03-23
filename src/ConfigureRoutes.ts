@@ -11,9 +11,9 @@ export class ConfigureRoutes {
     const router = Router();
 
     router.get("/hello", (_req, res, _next) => {
-      console.log("into the hello request");
+      console.log("you are into the hello request");
       return res.status(200).send({
-        message: "You have reached the server. And it's healthy!",
+        message: "Hello there. I am healthy!",
       });
     });
 
