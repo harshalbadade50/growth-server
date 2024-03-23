@@ -9,6 +9,13 @@ export class ConfigureRoutes {
 
   public config() {
     const router = Router();
+
+    router.get("/", (_req, res, _next) => {
+      return res.status(200).send({
+        message: "You have reached the server. And it's healthy!",
+      });
+    });
+
     router.post(
       "/user/register",
       this.context.userService.registerUser.bind(this.context.userService)
