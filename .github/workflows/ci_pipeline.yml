@@ -67,6 +67,5 @@ jobs:
 
       - name: Set project and connect to cluster
         run: |
-          gcloud auth login
           gcloud config set project my-growth-project-417918
           gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
