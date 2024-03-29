@@ -62,7 +62,7 @@ jobs:
         id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
-          token_format: "access_token"
+          #token_format: "access_token"
           project_id: "my-growth-project-417918"
           service_account: "github-actions-access@my-growth-project-417918.iam.gserviceaccount.com"
           workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
