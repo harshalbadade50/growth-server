@@ -70,7 +70,7 @@ jobs:
       - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v2"
 
-      - id: Connect to Cluster
+      - name: Connect to Cluster
         uses: "google-github-actions/get-gke-credentials@v2"
         with:
           cluster_name: "my-growth-cluster"
