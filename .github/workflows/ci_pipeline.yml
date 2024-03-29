@@ -62,13 +62,19 @@ jobs:
         id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
+          token_format: "access_token"
           project_id: "my-growth-project-417918"
           service_account: "github-actions-access@my-growth-project-417918.iam.gserviceaccount.com"
           workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
 
-      - name: Set project and connect to cluster
-        id: "gcloud"
-        run: |
-          gcloud config set account github-actions-access@my-growth-project-417918.iam.gserviceaccount.com
-          gcloud config set project my-growth-project-417918
-          gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
+      - id: "get-credentials"
+        uses: "google-github-actions/get-gke-credentials@v2"
+        with:
+          cluster_name: "my-growth-cluster"
+          location: "europe-west3-a"
+
+      # - name: Set project and connect to cluster
+      #   id: "gcloud"
+      #   run: |
+      #     gcloud config set project my-growth-project-417918
+      #     gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
