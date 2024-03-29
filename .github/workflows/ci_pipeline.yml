@@ -70,4 +70,5 @@ jobs:
         id: "gcloud"
         run: |
           gcloud config set project my-growth-project-417918
+          gcloud auth list
           gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
