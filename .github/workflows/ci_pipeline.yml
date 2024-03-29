@@ -68,4 +68,5 @@ jobs:
       - name: Set project and connect to cluster
         run: |
           gcloud config set project my-growth-project-417918
+          gcloud config set account harsh.badade5050@gmail.com
           gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
