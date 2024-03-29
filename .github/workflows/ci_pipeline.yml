@@ -65,20 +65,17 @@ jobs:
           create_credentials_file: true
           #project_id: "my-growth-project-417918"
           service_account: "github-actions-access@my-growth-project-417918.iam.gserviceaccount.com"
-          #workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/deployment-actions-pool/providers/deployment-provider"
 
-      - name: "Set up Cloud SDK"
+      - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v2"
 
-      - id: "get-credentials"
+      - id: Connect to Cluster
         uses: "google-github-actions/get-gke-credentials@v2"
         with:
           cluster_name: "my-growth-cluster"
           location: "europe-west3-a"
 
-      # - name: Set project and connect to cluster
-      #   id: "gcloud"
-      #   run: |
-      #     gcloud config set project my-growth-project-417918
-      #     gcloud container clusters get-credentials my-growth-cluster --zone europe-west3-a --project my-growth-project-417918
+      - name: Create a Deployment
+        run: |
+          kubectl apply -f ../../deployments/deployment.yaml
