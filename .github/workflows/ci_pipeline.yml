@@ -78,4 +78,4 @@ jobs:
 
       - name: Create a Deployment
         run: |
-          kubectl apply -f ../../deployments/deployment.yaml
+          kubectl apply -f deployments/deployment.yaml
