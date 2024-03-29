@@ -66,7 +66,7 @@ jobs:
           #project_id: "my-growth-project-417918"
           service_account: "github-actions-access@my-growth-project-417918.iam.gserviceaccount.com"
           #workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
-          workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/new-github-actions-pool/providers/new-github-provider"
+          workload_identity_provider: "projects/1030447127536/locations/global/workloadIdentityPools/deployment-actions-pool/providers/deployment-provider"
 
       - name: "Set up Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v2"
