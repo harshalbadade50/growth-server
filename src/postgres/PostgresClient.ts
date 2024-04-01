@@ -42,9 +42,9 @@ export class PostgresClient {
       instanceConnectionName: process.env.INSTANCE_CONNECTION_NAME!,
       ipType: IpAddressTypes.PRIVATE,
     });
-    const dbUser = base64.decode(process.env.DB_USER);
-    const dbPass = base64.decode(process.env.DB_PASS);
-    const dbName = base64.decode(process.env.DB_NAME);
+    const dbUser = base64.decode(process.env.DB_USER!);
+    const dbPass = base64.decode(process.env.DB_PASS!);
+    const dbName = base64.decode(process.env.DB_NAME!);
     const dbConfig = {
       //client: "pg",
       // connection: {
