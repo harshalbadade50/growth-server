@@ -7,8 +7,8 @@ import { UserService } from "./services/UserService";
 export class Application {
   constructor() {}
 
-  public setup() {
-    const postgresClient = new PostgresClient().configure();
+  public async setup() {
+    const postgresClient = await new PostgresClient().configure();
     const userService = new UserService(postgresClient);
 
     const services: ExpresServerInterface = {
