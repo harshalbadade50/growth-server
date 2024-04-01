@@ -1,7 +1,7 @@
 -- Create a new role if not exists
 DO $$ BEGIN
   IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = 'growth_user') THEN
-    CREATE ROLE growth_user WITH LOGIN PASSWORD 'growth_password' CREATEDB CREATEROLE;
+    CREATE ROLE growth_user WITH LOGIN PASSWORD 'growth_user_pwd' CREATEDB CREATEROLE;
   END IF;
 END $$;
 

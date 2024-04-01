@@ -1,4 +1,4 @@
-name: Continous Integration Pipeline
+name: CICD Pipeline
 
 on:
   push:
@@ -79,3 +79,4 @@ jobs:
       - name: Create a Deployment
         run: |
           kubectl apply -f deployments/deployment.yaml
+          kubectl apply -f deployments/service-account.yaml
