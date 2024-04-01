@@ -1,4 +1,5 @@
 import PG from "pg";
+import base64 from "base-64";
 import { Connector, IpAddressTypes } from "@google-cloud/cloud-sql-connector";
 
 const { Pool } = PG;
@@ -41,6 +42,9 @@ export class PostgresClient {
       instanceConnectionName: process.env.INSTANCE_CONNECTION_NAME!,
       ipType: IpAddressTypes.PRIVATE,
     });
+    const dbUser = base64.decode(process.env.DB_USER);
+    const dbPass = base64.decode(process.env.DB_PASS);
+    const dbName = base64.decode(process.env.DB_NAME);
     const dbConfig = {
       //client: "pg",
       // connection: {
@@ -50,9 +54,9 @@ export class PostgresClient {
       //   database: process.env.DB_NAME || "growth_db",
       // },
       ...clientOpts,
-      user: process.env.DB_USER || "growth_user",
-      password: process.env.DB_PASS || "growth_user_pwd",
-      database: process.env.DB_NAME || "growth_db",
+      user: dbUser || "growth_user",
+      password: dbPass || "growth_user_pwd",
+      database: dbName || "growth_db",
     };
 
     return dbConfig;
