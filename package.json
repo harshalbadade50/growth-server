@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "server side code",
+  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

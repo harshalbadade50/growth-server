@@ -1,8 +1,8 @@
-import { ExpressServer } from "./ExpressServer";
+import { ExpressServer } from "./ExpressServer.js";
 
-import type { ExpresServerInterface } from "./ExpresServerContext";
-import { PostgresClient } from "./postgres/PostgresClient";
-import { UserService } from "./services/UserService";
+import type { ExpresServerInterface } from "./ExpresServerContext.js";
+import { PostgresClient } from "./postgres/PostgresClient.js";
+import { UserService } from "./services/UserService.js";
 
 export class Application {
   constructor() {}

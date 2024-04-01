@@ -3,8 +3,8 @@ import session from "express-session";
 import bodyParser from "body-parser";
 import type { Express } from "express";
 
-import { ConfigureRoutes } from "./ConfigureRoutes";
-import type { ExpresServerInterface } from "./ExpresServerContext";
+import { ConfigureRoutes } from "./ConfigureRoutes.js";
+import type { ExpresServerInterface } from "./ExpresServerContext.js";
 
 export class ExpressServer {
   private server?: Express;

@@ -31,41 +31,44 @@ export class PostgresClient {
   }
 
   private async getConfiguration(): Promise<PG.PoolConfig> {
-    //const port = process.env.PG_PORT ? Number(process.env.PGPORT) : 5432;
+    const port = process.env.PG_PORT ? Number(process.env.PGPORT) : 5432;
     console.log(
       "INSTANCE_CONNECTION_NAME is - ",
       process.env.INSTANCE_CONNECTION_NAME
     );
 
-    const connector = new Connector();
-    const clientOpts = await connector.getOptions({
-      instanceConnectionName: process.env.INSTANCE_CONNECTION_NAME!,
-      ipType: IpAddressTypes.PRIVATE,
-    });
-    const dbUser = base64.decode(process.env.DB_USER!);
-    const dbPass = base64.decode(process.env.DB_PASS!);
-    const dbName = base64.decode(process.env.DB_NAME!);
-    const dbConfig = {
-      //client: "pg",
-      // connection: {
-      //   ...clientOpts,
-      //   user: process.env.DB_USER || "growth_user",
-      //   password: process.env.DB_PASS || "growth_user_pwd",
-      //   database: process.env.DB_NAME || "growth_db",
-      // },
-      ...clientOpts,
-      user: dbUser || "growth_user",
-      password: dbPass || "growth_user_pwd",
-      database: dbName || "growth_db",
-    };
+    if (process.env.INSTANCE_CONNECTION_NAME) {
+      const connector = new Connector();
+      const clientOpts = await connector.getOptions({
+        instanceConnectionName: process.env.INSTANCE_CONNECTION_NAME!,
+        ipType: IpAddressTypes.PRIVATE,
+      });
+      const dbUser = base64.decode(process.env.DB_USER!);
+      const dbPass = base64.decode(process.env.DB_PASS!);
+      const dbName = base64.decode(process.env.DB_NAME!);
+      const dbConfig = {
+        //client: "pg",
+        // connection: {
+        //   ...clientOpts,
+        //   user: process.env.DB_USER || "growth_user",
+        //   password: process.env.DB_PASS || "growth_user_pwd",
+        //   database: process.env.DB_NAME || "growth_db",
+        // },
+        ...clientOpts,
+        user: dbUser || "growth_user",
+        password: dbPass || "growth_user_pwd",
+        database: dbName || "growth_db",
+      };
 
-    return dbConfig;
-    // return {
-    //   user: process.env.PGUSER || "growth",
-    //   host: process.env.PGHOST || "localhost",
-    //   database: process.env.PGDATABASE || "growth",
-    //   password: process.env.PGPASSWORD || "growth",
-    //   port,
-    // };
+      return dbConfig;
+    }
+
+    return {
+      user: process.env.PGUSER || "growth",
+      host: process.env.PGHOST || "localhost",
+      database: process.env.PGDATABASE || "growth",
+      password: process.env.PGPASSWORD || "growth",
+      port,
+    };
   }
 }

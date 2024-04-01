@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import type { ExpresServerInterface } from "./ExpresServerContext";
+import type { ExpresServerInterface } from "./ExpresServerContext.js";
 
-import { authenticateToken } from "./middleware/Authenticate";
+import { authenticateToken } from "./middleware/Authenticate.js";
 
 export class ConfigureRoutes {
   constructor(private context: ExpresServerInterface) {}
