@@ -49,9 +49,12 @@ spec:
             # following flag to have the proxy connect over private IP
             # - "--private-ip"
 
+            # Enable structured logging with LogEntry format:
+            - "--structured-logs"
+
             # If you are not connecting with Automatic IAM, you can delete
             # the following flag.
-            - "--auto-iam-authn"
+            # - "--auto-iam-authn"
 
             # tcp should be set to the port the proxy should listen on
             # and should match the DB_PORT value set above.

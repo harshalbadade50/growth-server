@@ -41,7 +41,7 @@ export class PostgresClient {
       const connector = new Connector();
       const clientOpts = await connector.getOptions({
         instanceConnectionName: process.env.INSTANCE_CONNECTION_NAME!,
-        ipType: IpAddressTypes.PRIVATE,
+        ipType: IpAddressTypes.PUBLIC,
       });
       const dbUser = base64.decode(process.env.DB_USER!);
       const dbPass = base64.decode(process.env.DB_PASS!);
