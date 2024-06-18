@@ -38,9 +38,16 @@ export class PostgresClient {
     );
 
     if (process.env.INSTANCE_CONNECTION_NAME) {
-      const dbUser = base64.decode(process.env.DB_USER!);
-      const dbPass = base64.decode(process.env.DB_PASS!);
-      const dbName = base64.decode(process.env.DB_NAME!);
+      const DB_USER = Buffer.from(process.env.DB_USER || '', 'base64').toString('utf-8');
+      const DB_PASS = Buffer.from(process.env.DB_PASS || '', 'base64').toString('utf-8');
+      const DB_NAME = Buffer.from(process.env.DB_NAME || '', 'base64').toString('utf-8');
+      console.log('DB_USER from secret - ', DB_USER)
+      console.log('DB_PASS from secret - ', DB_PASS)
+      console.log('DB_NAME from secret - ', DB_NAME)
+
+      const dbUser = 'quickstartuser' //base64.decode(process.env.DB_USER!);
+      const dbPass = 'postgresdb' //base64.decode(process.env.DB_PASS!);
+      const dbName = 'quickstartdb' //base64.decode(process.env.DB_NAME!);
 
       console.log(
         "before connector.getOptions is called -- ",
