@@ -56,7 +56,7 @@ jobs:
           docker tag ${{ secrets.DOCKER_USERNAME }}/growth-server ${{ secrets.DOCKER_USERNAME }}/growth-server:latest
 
       - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/growth-server
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/growth-server:latest
 
       - name: GCP Login
         id: "auth"
