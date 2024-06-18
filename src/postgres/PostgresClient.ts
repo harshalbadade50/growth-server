@@ -33,7 +33,7 @@ export class PostgresClient {
   private async getConfiguration(): Promise<PG.PoolConfig> {
     const port = process.env.PG_PORT ? Number(process.env.PGPORT) : 5432;
     console.log(
-      "INSTANCE_CONNECTION_NAME is - ",
+      "Database connection string - ",
       process.env.INSTANCE_CONNECTION_NAME
     );
 

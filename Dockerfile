@@ -9,6 +9,7 @@ RUN npm install
 COPY . .
 
 RUN npm run build
+COPY build ./build
 
 EXPOSE 4000
 
